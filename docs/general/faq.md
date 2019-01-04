@@ -6,8 +6,8 @@
   - [OS X / Linux:](#os-x--linux)
   - [Windows](#windows)
 - [Issue with local caching when running in production mode (F5 / ctrl+F5 / cmd+r weird behavior)](#issue-with-local-caching-when-running-in-production-mode-f5--ctrlf5--cmdr-weird-behavior)
-    - [Quick fix on your local browser:](#quick-fix-on-your-local-browser)
-    - [Full in-depth explanation](#full-in-depth-explanation)
+  - [Quick fix on your local browser:](#quick-fix-on-your-local-browser)
+  - [Full in-depth explanation](#full-in-depth-explanation)
 - [Local webfonts not working for development](#local-webfonts-not-working-for-development)
 - [Non-route containers](#non-route-containers)
   - [Where do I put the reducer?](#where-do-i-put-the-reducer)
@@ -255,6 +255,4 @@ More information is available in the [official documentation](https://github.com
 
 ## Have another question?
 
-Submit an [issue](https://github.com/react-boilerplate/react-boilerplate/issues),
-hop onto the [Spectrum chat](https://spectrum.chat/react-boilerplate)
-or contact Max direct on [twitter](https://twitter.com/mxstbr)!
+Submit an [issue](https://github.com/react-boilerplate/react-boilerplate/issues)

@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /*
  * Home Actions
  *
@@ -14,7 +15,7 @@
  *        return { type: YOUR_ACTION_CONSTANT, var: var }
  *    }
  */
-
+import { LOAD_SIMPLY } from 'containers/App/constants';
 import { CHANGE_USERNAME } from './constants';
 
 /**
@@ -30,3 +31,9 @@ export function changeUsername(name) {
     name,
   };
 }
+export const onClickDispatchloaderCB = action => {
+  return {
+    type: LOAD_SIMPLY,
+    data: action,
+  };
+};

@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
 /*
  * HomePage
  *
@@ -21,6 +23,7 @@ import {
 } from 'containers/App/selectors';
 import H2 from 'components/H2';
 import ReposList from 'components/ReposList';
+import reducerLoader from 'components/common_reducer';
 import AtPrefix from './AtPrefix';
 import CenteredSection from './CenteredSection';
 import Form from './Form';
@@ -28,8 +31,8 @@ import Input from './Input';
 import Section from './Section';
 import messages from './messages';
 import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import { changeUsername, onClickDispatchloaderCB } from './actions';
+import { makeSelectUsername, getLoaderSatus } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -45,13 +48,13 @@ export class HomePage extends React.PureComponent {
   }
 
   render() {
-    const { loading, error, repos } = this.props;
+    const { loading, error, repos, loaderBool } = this.props;
     const reposListProps = {
       loading,
       error,
       repos,
     };
-
+    console.log(loaderBool);
     return (
       <article>
         <Helmet>
@@ -62,6 +65,14 @@ export class HomePage extends React.PureComponent {
           />
         </Helmet>
         <div>
+          <button
+            type="button"
+            onClick={() => {
+              this.props.onClickDispatchloader(Math.random());
+            }}
+          >
+            Whats Up
+          </button>
           <CenteredSection>
             <H2>
               <FormattedMessage {...messages.startProjectHeader} />
@@ -104,6 +115,7 @@ HomePage.propTypes = {
   onSubmitForm: PropTypes.func,
   username: PropTypes.string,
   onChangeUsername: PropTypes.func,
+  onClickDispatchloader: PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -113,6 +125,7 @@ export function mapDispatchToProps(dispatch) {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadRepos());
     },
+    onClickDispatchloader: typex => dispatch(onClickDispatchloaderCB(typex)),
   };
 }
 
@@ -121,6 +134,7 @@ const mapStateToProps = createStructuredSelector({
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
+  loaderBool: getLoaderSatus(),
 });
 
 const withConnect = connect(
@@ -129,10 +143,16 @@ const withConnect = connect(
 );
 
 const withReducer = injectReducer({ key: 'home', reducer });
+const withReducerLoader = injectReducer({
+  key: 'loader',
+  reducer: reducerLoader,
+});
+
 const withSaga = injectSaga({ key: 'home', saga });
 
 export default compose(
   withReducer,
+  withReducerLoader,
   withSaga,
   withConnect,
 )(HomePage);

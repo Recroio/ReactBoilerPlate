@@ -23,9 +23,10 @@ import App from 'containers/App';
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
-// Load the favicon and the .htaccess file
-import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+// Load the favicon and the .htaccess file and config file
+import '!file-loader?name=[name].[ext]!./assets/images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
+import '!file-loader?name=[name].[ext]!./config';
 
 import configureStore from './configureStore';
 

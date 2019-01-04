@@ -13,7 +13,7 @@ class Header extends React.Component {
   render() {
     return (
       <div>
-        <A href="https://twitter.com/mxstbr">
+        <A href="">
           <Img src={Banner} alt="react-boilerplate - Logo" />
         </A>
         <NavBar>
